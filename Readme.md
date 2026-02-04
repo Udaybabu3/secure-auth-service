@@ -241,6 +241,7 @@ GET    /api/protected       Protected route
 - All setup steps are documented
 - Project runs fully on a local machine
 - No additional configuration is required
+- For detailed architectural and security design decisions, see DESIGN.md.
 
 ---
 
