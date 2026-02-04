@@ -1,11 +1,17 @@
 /* =====================
+   CONFIG
+   ===================== */
+const API_BASE =
+  window.API_BASE_URL || "http://localhost:4000/api";
+
+/* =====================
    AUTHENTICATED FETCH
    ===================== */
-async function fetchWithAuth(url) {
+async function fetchWithAuth(path) {
   let token = localStorage.getItem("accessToken");
 
   // First attempt with current access token
-  let res = await fetch(url, {
+  let res = await fetch(`${API_BASE}${path}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -14,17 +20,15 @@ async function fetchWithAuth(url) {
 
   // If access token expired → try refresh
   if (res.status === 401) {
-    const refreshRes = await fetch(
-      "http://localhost:4000/api/auth/refresh",
-      {
-        method: "POST",
-        credentials: "include",
-      }
-    );
+    const refreshRes = await fetch(`${API_BASE}/auth/refresh`, {
+      method: "POST",
+      credentials: "include",
+    });
 
     if (!refreshRes.ok) {
-      // Session ended or compromised
+      // Session expired or invalid
       localStorage.removeItem("accessToken");
+      alert("Your session has expired. Please log in again.");
       window.location.href = "index.html";
       return null;
     }
@@ -33,7 +37,7 @@ async function fetchWithAuth(url) {
     localStorage.setItem("accessToken", refreshData.accessToken);
 
     // Retry original request with new token
-    res = await fetch(url, {
+    res = await fetch(`${API_BASE}${path}`, {
       headers: {
         Authorization: `Bearer ${refreshData.accessToken}`,
       },
@@ -54,9 +58,7 @@ async function fetchWithAuth(url) {
     return;
   }
 
-  const res = await fetchWithAuth(
-    "http://localhost:4000/api/auth/me"
-  );
+  const res = await fetchWithAuth("/auth/me");
 
   if (!res || !res.ok) {
     window.location.href = "index.html";
@@ -80,7 +82,7 @@ async function fetchWithAuth(url) {
    ===================== */
 document.getElementById("logout")?.addEventListener("click", async () => {
   try {
-    await fetch("http://localhost:4000/api/auth/logout", {
+    await fetch(`${API_BASE}/auth/logout`, {
       method: "POST",
       credentials: "include",
     });

@@ -1,4 +1,10 @@
 /* =====================
+   CONFIG
+   ===================== */
+const API_BASE =
+  window.API_BASE_URL || "http://localhost:4000/api";
+
+/* =====================
    PASSWORD COUNTER (REGISTER)
    ===================== */
 const pwdInput = document.getElementById("password");
@@ -26,10 +32,10 @@ document.getElementById("loginForm")?.addEventListener("submit", async (e) => {
   button.innerText = "Logging in...";
 
   try {
-    const res = await fetch("http://localhost:4000/api/auth/login", {
+    const res = await fetch(`${API_BASE}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      credentials: "include", // IMPORTANT for refresh token cookie
+      credentials: "include", // refresh token cookie
       body: JSON.stringify({ email, password }),
     });
 
@@ -43,7 +49,7 @@ document.getElementById("loginForm")?.addEventListener("submit", async (e) => {
     // Store access token
     localStorage.setItem("accessToken", data.accessToken);
 
-    // Redirect to dashboard
+    // Redirect
     window.location.href = "dashboard.html";
   } catch (err) {
     errorEl.innerText = "Server not reachable";
@@ -73,7 +79,7 @@ document.getElementById("registerForm")?.addEventListener("submit", async (e) =>
   button.disabled = true;
   button.innerText = "Creating account...";
 
-  // Frontend UX validation
+  // Frontend validation
   if (password !== confirm) {
     errorEl.innerText = "Passwords do not match";
     button.disabled = false;
@@ -82,7 +88,7 @@ document.getElementById("registerForm")?.addEventListener("submit", async (e) =>
   }
 
   try {
-    const res = await fetch("http://localhost:4000/api/auth/register", {
+    const res = await fetch(`${API_BASE}/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

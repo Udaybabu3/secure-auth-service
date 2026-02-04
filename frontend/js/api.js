@@ -1,4 +1,5 @@
-const API_BASE = "http://localhost:4000/api";
+const API_BASE =
+  window.API_BASE_URL || "http://localhost:4000/api";
 
 async function apiRequest(path, options = {}) {
   const accessToken = localStorage.getItem("accessToken");
@@ -15,10 +16,10 @@ async function apiRequest(path, options = {}) {
   const res = await fetch(`${API_BASE}${path}`, {
     ...options,
     headers,
-    credentials: "include", // IMPORTANT: sends refresh cookie
+    credentials: "include", // sends refresh cookie
   });
 
-  // Access token expired → try refresh
+  // Access token expired → try refresh once
   if (res.status === 401 && accessToken) {
     const refreshed = await refreshToken();
     if (refreshed) {
@@ -35,8 +36,12 @@ async function refreshToken() {
     credentials: "include",
   });
 
+  // Refresh failed → session expired
   if (!res.ok) {
     localStorage.removeItem("accessToken");
+
+    alert("Your session has expired. Please log in again.");
+
     window.location.href = "index.html";
     return false;
   }
