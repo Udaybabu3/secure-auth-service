@@ -113,21 +113,32 @@ Important notes:
 ---
 
 ### 4. Database Setup
+Open PostgreSQL(in cmd):
+
+psql -U postgres
 
 Create Database:
 
-psql -U postgres
 CREATE DATABASE secure_auth;
+
+Exit PostgreSQL:
+
 \q
 
-Load Schema:
+Load the Database Schema
+
+From the project root directory(terminal), run:
 
 psql -U postgres -d secure_auth -f db/schema.sql
+
+This command creates all required tables.
 
 Verify Tables:
 
 psql -U postgres -d secure_auth
+
 \dt
+
 \q
 
 Expected tables:
