@@ -94,9 +94,13 @@ JWT_ACCESS_EXPIRES_IN=15m
 JWT_REFRESH_EXPIRES_IN=7d
 
 DB_HOST=localhost
+
 DB_PORT=5432
+
 DB_USER=postgres
+
 DB_PASSWORD=your_postgres_password
+
 DB_NAME=secure_auth
 
 FRONTEND_ORIGIN=http://localhost:5500
