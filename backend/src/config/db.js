@@ -1,6 +1,6 @@
 const { Pool } = require("pg");
 
-console.log("🧪 db.js file loaded");
+console.log(" db.js file loaded");
 
 const pool = new Pool({
   host: process.env.DB_HOST,
@@ -15,10 +15,10 @@ if (process.env.NODE_ENV !== "test") {
   pool
     .query("SELECT 1")
     .then(() => {
-      console.log("✅ PostgreSQL connected and ready");
+      console.log(" PostgreSQL connected and ready");
     })
     .catch((err) => {
-      console.error("❌ PostgreSQL connection failed:", err.message);
+      console.error(" PostgreSQL connection failed:", err.message);
       process.exit(1);
     });
 }
