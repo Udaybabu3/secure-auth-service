@@ -59,33 +59,7 @@ Ensure the following are installed on your system:
 
 ## Project Structure
 
-secure-auth-service/
-├── backend/
-│   ├── src/
-│   │   ├── app.js
-│   │   ├── server.js
-│   │   ├── config/
-│   │   │   └── db.js
-│   │   ├── controllers/
-│   │   ├── middleware/
-│   │   ├── routes/
-│   │   ├── services/
-│   │   ├── utils/
-│   │   └── tests/
-│   ├── .env.example
-│   └── package.json
-│
-├── frontend/
-│   ├── index.html
-│   ├── register.html
-│   ├── dashboard.html
-│   ├── js/
-│   └── css/
-│
-├── db/
-│   └── schema.sql
-│
-└── README.md
+![Folder Structure ](images/structure.jpg)
 
 ---
 
