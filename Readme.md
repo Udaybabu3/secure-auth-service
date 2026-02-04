@@ -58,34 +58,8 @@ Ensure the following are installed on your system:
 ---
 
 ## Project Structure
+<img width="348" height="652" alt="image" src="https://github.com/user-attachments/assets/588a3768-d166-404f-88f1-b841dcd22799" />
 
-secure-auth-service/
-├── backend/
-│   ├── src/
-│   │   ├── app.js
-│   │   ├── server.js
-│   │   ├── config/
-│   │   │   └── db.js
-│   │   ├── controllers/
-│   │   ├── middleware/
-│   │   ├── routes/
-│   │   ├── services/
-│   │   ├── utils/
-│   │   └── tests/
-│   ├── .env.example
-│   └── package.json
-│
-├── frontend/
-│   ├── index.html
-│   ├── register.html
-│   ├── dashboard.html
-│   ├── js/
-│   └── css/
-│
-├── db/
-│   └── schema.sql
-│
-└── README.md
 
 ---
 
