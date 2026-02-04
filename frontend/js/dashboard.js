@@ -5,10 +5,19 @@ const API_BASE =
   window.API_BASE_URL || "http://localhost:4000/api";
 
 /* =====================
+   SESSION HANDLING
+   ===================== */
+function handleSessionExpired() {
+  localStorage.removeItem("accessToken");
+  alert("Your session has expired. Please log in again.");
+  window.location.href = "index.html";
+}
+
+/* =====================
    AUTHENTICATED FETCH
    ===================== */
 async function fetchWithAuth(path) {
-  let token = localStorage.getItem("accessToken");
+  const token = localStorage.getItem("accessToken");
 
   // First attempt with current access token
   let res = await fetch(`${API_BASE}${path}`, {
@@ -26,10 +35,7 @@ async function fetchWithAuth(path) {
     });
 
     if (!refreshRes.ok) {
-      // Session expired or invalid
-      localStorage.removeItem("accessToken");
-      alert("Your session has expired. Please log in again.");
-      window.location.href = "index.html";
+      handleSessionExpired();
       return null;
     }
 

@@ -1,6 +1,21 @@
+/* =====================
+   CONFIG
+   ===================== */
 const API_BASE =
   window.API_BASE_URL || "http://localhost:4000/api";
 
+/* =====================
+   SESSION HANDLING
+   ===================== */
+function handleSessionExpired() {
+  localStorage.removeItem("accessToken");
+  alert("Your session has expired. Please log in again.");
+  window.location.href = "index.html";
+}
+
+/* =====================
+   API REQUEST
+   ===================== */
 async function apiRequest(path, options = {}) {
   const accessToken = localStorage.getItem("accessToken");
 
@@ -30,6 +45,9 @@ async function apiRequest(path, options = {}) {
   return res;
 }
 
+/* =====================
+   REFRESH TOKEN
+   ===================== */
 async function refreshToken() {
   const res = await fetch(`${API_BASE}/auth/refresh`, {
     method: "POST",
@@ -38,11 +56,7 @@ async function refreshToken() {
 
   // Refresh failed → session expired
   if (!res.ok) {
-    localStorage.removeItem("accessToken");
-
-    alert("Your session has expired. Please log in again.");
-
-    window.location.href = "index.html";
+    handleSessionExpired();
     return false;
   }
 
