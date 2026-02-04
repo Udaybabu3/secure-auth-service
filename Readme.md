@@ -74,11 +74,11 @@ npm install
 
 ### 3. Environment Configuration
 
-Create a .env file in the backend directory.
+-> Create a .env file in the backend directory.
 
 cp .env.example .env
 
-Edit .env with your local configuration:
+-> Edit .env with your local configuration:
 
 PORT=4000
 
@@ -113,27 +113,27 @@ Important notes:
 ---
 
 ### 4. Database Setup
-Open PostgreSQL(in cmd):
+-> Open PostgreSQL(in cmd):
 
 psql -U postgres
 
-Create Database:
+-> Create Database:
 
 CREATE DATABASE secure_auth;
 
-Exit PostgreSQL:
+-> Exit PostgreSQL:
 
 \q
 
-Load the Database Schema
+-> Load the Database Schema:-
 
-From the project root directory(terminal), run:
+-> From the project root directory(terminal), run:
 
 psql -U postgres -d secure_auth -f db/schema.sql
 
-This command creates all required tables.
+*This command creates all required tables.
 
-Verify Tables:
+-> Verify Tables:
 
 psql -U postgres -d secure_auth
 
@@ -223,10 +223,15 @@ Expected:
 ## API Summary
 
 POST   /api/auth/register   Register user
+
 POST   /api/auth/login      Login user
+
 POST   /api/auth/refresh    Refresh token
+
 POST   /api/auth/logout     Logout user
+
 GET    /api/auth/me         Current user
+
 GET    /api/protected       Protected route
 
 ---
