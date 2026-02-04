@@ -58,8 +58,12 @@ Ensure the following are installed on your system:
 ---
 
 ## Project Structure
+<img width="348" height="652" alt="image" src="https://github.com/user-attachments/assets/588a3768-d166-404f-88f1-b841dcd22799" />
 
+<<<<<<< HEAD
 ![Folder Structure ](images/structure.jpg)
+=======
+>>>>>>> 710806246136dafd795320fa9915666d5e5e4425
 
 ---
 
