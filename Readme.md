@@ -87,7 +87,13 @@ Edit .env with your local configuration:
 
 PORT=4000
 
-JWT_SECRET=your_long_random_secret_key_here
+JWT_SECRET=your_long_random_secret_key_here  
+
+example: 
+
+  JWT_SECRET=R9$kT3!aZQwM8@L#2E^xP7HfC5yD%Jm
+
+
 
 JWT_ACCESS_EXPIRES_IN=15m
 
