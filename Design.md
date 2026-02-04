@@ -147,6 +147,8 @@ Authentication error messages are intentionally generic to prevent user enumerat
 
 Login attempts are rate-limited to reduce the risk of brute-force attacks while maintaining acceptable user experience.  
 Rate limiting is applied only to sensitive authentication endpoints.
+Attempt counters are stored in-memory for low latency and simplicity. Database persistence is unnecessary since counters expire after 15 minutes and surviving server restarts is not critical for security.
+
 
 ---
 
