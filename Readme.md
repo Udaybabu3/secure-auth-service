@@ -59,16 +59,11 @@ Ensure the following are installed on your system:
 
 ## Project Structure
 <img width="348" height="652" alt="image" src="https://github.com/user-attachments/assets/588a3768-d166-404f-88f1-b841dcd22799" />
----
+
 
 ## Installation and Setup
 
 ### 1. Clone the Repository
-
-git clone <repository-url>
-cd secure-auth-service
-
----
 
 ### 2. Backend Setup
 
